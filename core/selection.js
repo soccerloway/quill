@@ -179,6 +179,7 @@ class Selection {
     if (selection == null || selection.rangeCount <= 0) return null;
     const nativeRange = selection.getRangeAt(0);
     if (nativeRange == null) return null;
+    console.log('@@@@@@@')
     const range = this.normalizeNative(nativeRange);
     debug.info('getNativeRange', range);
     return range;
