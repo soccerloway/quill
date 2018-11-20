@@ -179,7 +179,7 @@ class Selection {
     if (selection == null || selection.rangeCount <= 0) return null;
     const nativeRange = selection.getRangeAt(0);
     if (nativeRange == null) return null;
-    console.log('@@@@@@@')
+    if (parentIsEmbedBlock(nativeRange.startContainer, this.root)) return null;
     const range = this.normalizeNative(nativeRange);
     debug.info('getNativeRange', range);
     return range;
@@ -405,6 +405,19 @@ class Selection {
       }
     }
   }
+}
+
+function parentIsEmbedBlock (node, rootElement) {
+  let parent = '';
+  try {
+    parent = node.parentNode;
+  } catch (e) {
+    return false;
+  }
+  if(!parent) return false;
+  if (parent.isEqualNode(rootElement) || parent.isEqualNode(document)) return false;
+  if (parent.hasAttribute('data-embed')) return true;
+  return parentIsEmbedBlock(parent, rootElement);
 }
 
 function contains(parent, descendant) {

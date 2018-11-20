@@ -6,6 +6,7 @@ const GUARD_TEXT = '\uFEFF';
 class Embed extends EmbedBlot {
   constructor(scroll, node) {
     super(scroll, node);
+    node.setAttribute('data-embed', true)
     this.contentNode = document.createElement('span');
     this.contentNode.setAttribute('contenteditable', false);
     Array.from(this.domNode.childNodes).forEach(childNode => {
