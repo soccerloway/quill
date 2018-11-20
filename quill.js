@@ -32,16 +32,16 @@ import CodeBlock, { Code as InlineCode } from './formats/code';
 
 import Syntax from './modules/syntax';
 import Table from './modules/table';
-import Toolbar from './modules/toolbar';
+// import Toolbar from './modules/toolbar';
 
-import Icons from './ui/icons';
+// import Icons from './ui/icons';
 import Picker from './ui/picker';
 import ColorPicker from './ui/color-picker';
-import IconPicker from './ui/icon-picker';
+// import IconPicker from './ui/icon-picker';
 import Tooltip from './ui/tooltip';
 
-import BubbleTheme from './themes/bubble';
-import SnowTheme from './themes/snow';
+// import BubbleTheme from './themes/bubble';
+// import SnowTheme from './themes/snow';
 
 Quill.register(
   {
@@ -94,14 +94,14 @@ Quill.register(
 
     'modules/syntax': Syntax,
     'modules/table': Table,
-    'modules/toolbar': Toolbar,
+    // 'modules/toolbar': Toolbar,
 
-    'themes/bubble': BubbleTheme,
-    'themes/snow': SnowTheme,
+    // 'themes/bubble': BubbleTheme,
+    // 'themes/snow': SnowTheme,
 
-    'ui/icons': Icons,
+    // 'ui/icons': Icons,
     'ui/picker': Picker,
-    'ui/icon-picker': IconPicker,
+    // 'ui/icon-picker': IconPicker,
     'ui/color-picker': ColorPicker,
     'ui/tooltip': Tooltip,
   },
