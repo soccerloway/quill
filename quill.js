@@ -31,7 +31,7 @@ import Video from './formats/video';
 import CodeBlock, { Code as InlineCode } from './formats/code';
 
 import Syntax from './modules/syntax';
-import Table from './modules/table';
+// import Table from './modules/table';
 // import Toolbar from './modules/toolbar';
 
 // import Icons from './ui/icons';
@@ -93,7 +93,7 @@ Quill.register(
     'formats/video': Video,
 
     'modules/syntax': Syntax,
-    'modules/table': Table,
+    // 'modules/table': Table,
     // 'modules/toolbar': Toolbar,
 
     // 'themes/bubble': BubbleTheme,
