@@ -88,7 +88,7 @@ Quill.register(
     'formats/strike': Strike,
     'formats/underline': Underline,
 
-    'formats/formula': Formula,
+    // 'formats/formula': Formula,
     'formats/image': Image,
     'formats/video': Video,
 

@@ -25,7 +25,7 @@ Quill.register({
   'blots/scroll': Scroll,
   'blots/text': TextBlot,
 
-  'modules/clipboard': Clipboard,
+  // 'modules/clipboard': Clipboard,
   'modules/history': History,
   // 'modules/keyboard': Keyboard,
   'modules/uploader': Uploader,
