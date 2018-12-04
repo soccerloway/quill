@@ -416,7 +416,7 @@ function parentIsEmbedBlock (node, rootElement) {
   }
   if(!parent) return false;
   if (parent.isEqualNode(rootElement) || parent.isEqualNode(document)) return false;
-  if (parent.hasAttribute('data-embed')) return true;
+  if (parent.hasAttribute('data-editable-embed')) return true;
   return parentIsEmbedBlock(parent, rootElement);
 }
 
