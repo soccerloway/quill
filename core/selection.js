@@ -179,7 +179,7 @@ class Selection {
     if (selection == null || selection.rangeCount <= 0) return null;
     const nativeRange = selection.getRangeAt(0);
     if (nativeRange == null) return null;
-    // if (parentIsEmbedBlock(nativeRange.startContainer, this.root)) return null;
+    if (parentIsEditableEmbedBlock(nativeRange.startContainer, this.root)) return null;
     const range = this.normalizeNative(nativeRange);
     debug.info('getNativeRange', range);
     return range;
@@ -407,7 +407,7 @@ class Selection {
   }
 }
 
-function parentIsEmbedBlock (node, rootElement) {
+function parentIsEditableEmbedBlock (node, rootElement) {
   let parent = '';
   try {
     parent = node.parentNode;
@@ -417,7 +417,7 @@ function parentIsEmbedBlock (node, rootElement) {
   if(!parent) return false;
   if (parent.isEqualNode(rootElement) || parent.isEqualNode(document)) return false;
   if (parent.hasAttribute('data-editable-embed')) return true;
-  return parentIsEmbedBlock(parent, rootElement);
+  return parentIsEditableEmbedBlock(parent, rootElement);
 }
 
 function contains(parent, descendant) {
