@@ -75,6 +75,7 @@ class Block extends BlockBlot {
 
   insertBefore(blot, ref) {
     const { head } = this.children;
+    console.log(this.children)
     super.insertBefore(blot, ref);
     if (head instanceof Break) {
       head.remove();
