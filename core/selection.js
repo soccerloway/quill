@@ -75,6 +75,7 @@ class Selection {
         this.scroll.batchEnd();
         this.composing = false;
         if (this.cursor.parent) {
+          console.log(this.cursor)
           setTimeout(() => {
             const range = this.cursor.restore();
             console.log(range)
