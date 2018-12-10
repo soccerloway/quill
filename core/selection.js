@@ -75,10 +75,10 @@ class Selection {
         this.scroll.batchEnd();
         this.composing = false;
         if (this.cursor.parent) {
-          const range = this.cursor.restore();
-          if (!range) return;
-          console.log(range)
           setTimeout(() => {
+            const range = this.cursor.restore();
+            console.log(range)
+            if (!range) return;
             this.setNativeRange(
               range.startNode,
               range.startOffset,
