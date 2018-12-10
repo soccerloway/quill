@@ -71,6 +71,7 @@ class Selection {
       this.scroll.batchStart();
     });
     this.root.addEventListener('compositionend', () => {
+      console.log('compositonend triggered')
       setTimeout(() => {
         this.scroll.batchEnd();
         this.composing = false;
