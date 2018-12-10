@@ -46,8 +46,11 @@ class Embed extends EmbedBlot {
       }
     } else if (node === this.rightGuard) {
       if (this.next instanceof TextBlot) {
+        // bugfix: 在embed的rightGuard位置，使用拼音输入中文时，这里会被触发多次，
+        // 且只有第一次text是正确内容，之后text均为''，导致内容插入后，光标位置没变
+        // 拦截text为''的情况，光标行为正常
         if (!text.length || text.length < 1) return
-        console.log(text)
+
         this.next.insertAt(0, text);
         range = {
           startNode: this.next.domNode,
