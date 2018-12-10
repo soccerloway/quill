@@ -53,6 +53,7 @@ class Embed extends EmbedBlot {
       }
 
       if (this.next instanceof TextBlot) {
+        console.log(text)
         this.next.insertAt(0, text);
         range = {
           startNode: this.next.domNode,
