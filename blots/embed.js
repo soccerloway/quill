@@ -45,14 +45,14 @@ class Embed extends EmbedBlot {
         };
       }
     } else if (node === this.rightGuard) {
-      if (this.next instanceof TextBlot) {
-        let startOffset = text.length;
-        if (node.data[node.data.length - 1] === GUARD_TEXT) {
-          // If the guard is on the right of the inserted text we need to
-          // compensate that extra space.
-          startOffset += 1;
-        }
+      let startOffset = text.length;
+      if (node.data[node.data.length - 1] === GUARD_TEXT) {
+        // If the guard is on the right of the inserted text we need to
+        // compensate that extra space.
+        startOffset += 1;
+      }
 
+      if (this.next instanceof TextBlot) {
         this.next.insertAt(0, text);
         range = {
           startNode: this.next.domNode,
