@@ -77,6 +77,7 @@ class Selection {
         if (this.cursor.parent) {
           const range = this.cursor.restore();
           if (!range) return;
+          console.log(range)
           setTimeout(() => {
             this.setNativeRange(
               range.startNode,
