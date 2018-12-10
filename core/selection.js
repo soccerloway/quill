@@ -71,16 +71,13 @@ class Selection {
       this.scroll.batchStart();
     });
     this.root.addEventListener('compositionend', () => {
-      console.log('compositonend triggered')
       setTimeout(() => {
         this.scroll.batchEnd();
         this.composing = false;
-        console.log(this.cursor)
         if (this.cursor.parent) {
+          const range = this.cursor.restore();
+          if (!range) return;
           setTimeout(() => {
-            const range = this.cursor.restore();
-            console.log(range)
-            if (!range) return;
             this.setNativeRange(
               range.startNode,
               range.startOffset,
