@@ -53,6 +53,7 @@ Inline.order = [
   'strike',
   'italic',
   'bold',
+  'square',
   'script',
   'link',
   'code', // Must be higher
