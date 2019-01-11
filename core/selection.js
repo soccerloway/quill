@@ -29,7 +29,7 @@ class Selection {
     this.emitter.listenDOM('selectionchange', document, () => {
       if (!this.mouseDown && !this.composing) {
         const native = this.getNativeRange();
-        if (native != null && parentIsEditableEmbedBlock(native.start.node, this.root)) return;
+        // if (native != null && parentIsEditableEmbedBlock(native.start.node, this.root)) return;
         setTimeout(this.update.bind(this, Emitter.sources.USER), 1);
       }
     });
@@ -37,8 +37,7 @@ class Selection {
       if (!this.hasFocus()) return;
       const native = this.getNativeRange();
       if (native == null) return;
-      console.log(native.start.node)
-      console.log(parentIsEditableEmbedBlock(native.start.node, this.root))
+      // 阻止可编辑元素(data-editable-embed)重置光标位置
       if (parentIsEditableEmbedBlock(native.start.node, this.root)) return;
       if (native.start.node === this.cursor.textNode) return; // cursor.restore() will handle
       this.emitter.once(Emitter.events.SCROLL_UPDATE, () => {
@@ -62,7 +61,6 @@ class Selection {
     });
     this.emitter.on(Emitter.events.SCROLL_OPTIMIZE, (mutations, context) => {
       if (context.range) {
-        console.log(context.range)
         const { startNode, startOffset, endNode, endOffset } = context.range;
         this.setNativeRange(startNode, startOffset, endNode, endOffset);
         this.update(Emitter.sources.SILENT);
