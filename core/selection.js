@@ -27,9 +27,9 @@ class Selection {
     this.handleComposition();
     this.handleDragging();
     this.emitter.listenDOM('selectionchange', document, () => {
-      const native = this.getNativeRange();
-      console.log(parentIsEditableEmbedBlock(native.start.node, this.root))
       if (!this.mouseDown && !this.composing) {
+        const native = this.getNativeRange();
+        if (native != null && parentIsEditableEmbedBlock(native.start.node, this.root)) return;
         setTimeout(this.update.bind(this, Emitter.sources.USER), 1);
       }
     });
