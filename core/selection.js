@@ -34,6 +34,7 @@ class Selection {
     this.emitter.on(Emitter.events.SCROLL_BEFORE_UPDATE, () => {
       if (!this.hasFocus()) return;
       const native = this.getNativeRange();
+      console.log(native)
       if (native == null) return;
       if (native.start.node === this.cursor.textNode) return; // cursor.restore() will handle
       this.emitter.once(Emitter.events.SCROLL_UPDATE, () => {
@@ -181,7 +182,8 @@ class Selection {
     if (selection == null || selection.rangeCount <= 0) return null;
     const nativeRange = selection.getRangeAt(0);
     if (nativeRange == null) return null;
-    if (parentIsEditableEmbedBlock(nativeRange.startContainer, this.root)) return null;
+    console.log(nativeRange)
+    // if (parentIsEditableEmbedBlock(nativeRange.startContainer, this.root)) return null;
     const range = this.normalizeNative(nativeRange);
     debug.info('getNativeRange', range);
     return range;
