@@ -36,11 +36,7 @@ class Selection {
       const native = this.getNativeRange();
       if (native == null) return;
       // 阻止可编辑元素(data-editable-embed)重置光标位置
-      if (parentIsEditableEmbedBlock(native.start.node, this.root)) {
-        this.setRange(null)
-        return;
-      }
-
+      if (parentIsEditableEmbedBlock(native.start.node, this.root)) return;
       if (native.start.node === this.cursor.textNode) return; // cursor.restore() will handle
       this.emitter.once(Emitter.events.SCROLL_UPDATE, () => {
         try {
