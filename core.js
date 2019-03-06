@@ -26,7 +26,7 @@ Quill.register({
   'blots/text': TextBlot,
 
   // 'modules/clipboard': Clipboard,
-  'modules/history': History,
+  // 'modules/history': History,
   // 'modules/keyboard': Keyboard,
   'modules/uploader': Uploader,
 });
