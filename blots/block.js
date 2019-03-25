@@ -17,6 +17,7 @@ class Block extends BlockBlot {
   constructor(scroll, domNode) {
     super(scroll, domNode);
     this.cache = {};
+    domNode.style.lineHeight = '1.82'
   }
 
   delta() {

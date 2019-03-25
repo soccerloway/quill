@@ -42,6 +42,11 @@ class Image extends EmbedBlot {
     return domNode.getAttribute('src');
   }
 
+  constructor(scroll, domNode) {
+    super(scroll, domNode);
+    domNode.style.verticalAlign = 'middle'
+  }
+
   format(name, value) {
     if (ATTRIBUTES.indexOf(name) > -1) {
       if (value) {
