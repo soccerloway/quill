@@ -2,6 +2,7 @@ import { EmbedBlot } from 'parchment';
 import { sanitize } from './link';
 
 const ATTRIBUTES = ['alt', 'height', 'width'];
+const STYLES = ['verticalAlign']
 
 class Image extends EmbedBlot {
   static create(value) {
@@ -13,12 +14,21 @@ class Image extends EmbedBlot {
   }
 
   static formats(domNode) {
+    let formats = {}
+
+    STYLES.reduce((formats, style) => {
+      if (domNode.style[style]) {
+        formats[style] = domNode.style[style];
+      }
+      return formats;
+    }, formats)
+
     return ATTRIBUTES.reduce((formats, attribute) => {
       if (domNode.hasAttribute(attribute)) {
         formats[attribute] = domNode.getAttribute(attribute);
       }
       return formats;
-    }, {});
+    }, formats);
   }
 
   static match(url) {
@@ -44,7 +54,7 @@ class Image extends EmbedBlot {
 
   constructor(scroll, domNode) {
     super(scroll, domNode);
-    domNode.style.verticalAlign = 'middle'
+    this.format('verticalAlign', 'middle')
   }
 
   format(name, value) {
@@ -53,6 +63,12 @@ class Image extends EmbedBlot {
         this.domNode.setAttribute(name, value);
       } else {
         this.domNode.removeAttribute(name);
+      }
+    } else if (STYLES.indexOf(name) > -1) {
+      if (value) {
+        this.domNode.style[name] = value
+      } else {
+        this.domNode.style[name] = 'initial'
       }
     } else {
       super.format(name, value);
