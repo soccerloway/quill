@@ -8,10 +8,6 @@ import Embed from './blots/embed';
 import Inline from './blots/inline';
 import Scroll from './blots/scroll';
 import TextBlot from './blots/text';
-
-import Clipboard from './modules/clipboard';
-import History from './modules/history';
-import Keyboard from './modules/keyboard';
 import Uploader from './modules/uploader';
 
 Quill.register({
