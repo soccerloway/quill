@@ -388,15 +388,17 @@ class Quill {
         const length = this.getLength();
         const deleted = this.editor.deleteText(0, length);
         const applied = this.editor.applyDelta(delta);
-        const lastOp = applied.ops[applied.ops.length - 1];
-        if (
-          lastOp != null &&
-          typeof lastOp.insert === 'string' &&
-          lastOp.insert[lastOp.insert.length - 1] === '\n'
-        ) {
-          this.editor.deleteText(this.getLength() - 1, 1);
-          applied.delete(1);
-        }
+        // setContents时删除最后一个空行，不需要此逻辑
+        // const lastOp = applied.ops[applied.ops.length - 1];
+        // if (
+        //   lastOp != null &&
+        //   typeof lastOp.insert === 'string' &&
+        //   lastOp.insert[lastOp.insert.length - 1] === '\n' &&
+        //   lastOp.attributes
+        // ) {
+        //   this.editor.deleteText(this.getLength() - 1, 1);
+        //   applied.delete(1);
+        // }
         return deleted.compose(applied);
       },
       source,
